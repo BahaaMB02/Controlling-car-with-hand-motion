@@ -1,0 +1,430 @@
+
+Final_projet.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000250  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000002c4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000002  00800060  00800060  000002c4  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002c4  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002f4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000088  00000000  00000000  00000330  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000978  00000000  00000000  000003b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000006e0  00000000  00000000  00000d30  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000004bd  00000000  00000000  00001410  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000c8  00000000  00000000  000018d0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000041e  00000000  00000000  00001998  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000000cb  00000000  00000000  00001db6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000058  00000000  00000000  00001e81  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a2 36       	cpi	r26, 0x62	; 98
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 3e 00 	call	0x7c	; 0x7c <main>
+  74:	0c 94 26 01 	jmp	0x24c	; 0x24c <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <main>:
+}*/
+
+	
+int main(void)
+{	/*ADC_Initilization();*/
+	Uart_Initilization(9600);
+  7c:	80 e8       	ldi	r24, 0x80	; 128
+  7e:	95 e2       	ldi	r25, 0x25	; 37
+  80:	0e 94 c7 00 	call	0x18e	; 0x18e <Uart_Initilization>
+	PORTA = 0 ;*/
+	
+while(1)
+{
+	
+		adcValue1 = Uart_Recieve();
+  84:	0e 94 e1 00 	call	0x1c2	; 0x1c2 <Uart_Recieve>
+  88:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if (adcValue1 == 'F')
+  8c:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  90:	86 34       	cpi	r24, 0x46	; 70
+  92:	49 f4       	brne	.+18     	; 0xa6 <main+0x2a>
+	{
+		DCMotor_Rotate(Motor_0,Motor_CW);
+  94:	60 e0       	ldi	r22, 0x00	; 0
+  96:	80 e0       	ldi	r24, 0x00	; 0
+  98:	0e 94 83 00 	call	0x106	; 0x106 <DCMotor_Rotate>
+		DCMotor_Rotate(Motor_1,Motor_CW);
+  9c:	60 e0       	ldi	r22, 0x00	; 0
+  9e:	81 e0       	ldi	r24, 0x01	; 1
+  a0:	0e 94 83 00 	call	0x106	; 0x106 <DCMotor_Rotate>
+  a4:	ef cf       	rjmp	.-34     	; 0x84 <main+0x8>
+		/*Set_Bit(PORTC,3);
+		Set_Bit(PORTC,4);*/
+	}
+	else if (adcValue1 == 'S')
+  a6:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  aa:	83 35       	cpi	r24, 0x53	; 83
+  ac:	39 f4       	brne	.+14     	; 0xbc <main+0x40>
+	{
+		DCMotor_Brake(Motor_0);
+  ae:	80 e0       	ldi	r24, 0x00	; 0
+  b0:	0e 94 b4 00 	call	0x168	; 0x168 <DCMotor_Brake>
+	
+		DCMotor_Brake(Motor_1);
+  b4:	81 e0       	ldi	r24, 0x01	; 1
+  b6:	0e 94 b4 00 	call	0x168	; 0x168 <DCMotor_Brake>
+  ba:	e4 cf       	rjmp	.-56     	; 0x84 <main+0x8>
+	}	
+	else if (adcValue1 == 'B')
+  bc:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  c0:	82 34       	cpi	r24, 0x42	; 66
+  c2:	49 f4       	brne	.+18     	; 0xd6 <main+0x5a>
+	{
+		DCMotor_Rotate(Motor_0,Motor_CCW);
+  c4:	61 e0       	ldi	r22, 0x01	; 1
+  c6:	80 e0       	ldi	r24, 0x00	; 0
+  c8:	0e 94 83 00 	call	0x106	; 0x106 <DCMotor_Rotate>
+		DCMotor_Rotate(Motor_1,Motor_CCW);
+  cc:	61 e0       	ldi	r22, 0x01	; 1
+  ce:	81 e0       	ldi	r24, 0x01	; 1
+  d0:	0e 94 83 00 	call	0x106	; 0x106 <DCMotor_Rotate>
+  d4:	d7 cf       	rjmp	.-82     	; 0x84 <main+0x8>
+	}
+	else if (adcValue1 == 'L')
+  d6:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  da:	8c 34       	cpi	r24, 0x4C	; 76
+  dc:	41 f4       	brne	.+16     	; 0xee <main+0x72>
+	{
+		DCMotor_Rotate(Motor_0,Motor_CW);
+  de:	60 e0       	ldi	r22, 0x00	; 0
+  e0:	80 e0       	ldi	r24, 0x00	; 0
+  e2:	0e 94 83 00 	call	0x106	; 0x106 <DCMotor_Rotate>
+		DCMotor_Brake(Motor_1);
+  e6:	81 e0       	ldi	r24, 0x01	; 1
+  e8:	0e 94 b4 00 	call	0x168	; 0x168 <DCMotor_Brake>
+  ec:	cb cf       	rjmp	.-106    	; 0x84 <main+0x8>
+	}
+	else if (adcValue1  == 'R')
+  ee:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  f2:	82 35       	cpi	r24, 0x52	; 82
+  f4:	39 f6       	brne	.-114    	; 0x84 <main+0x8>
+	{
+		DCMotor_Rotate(Motor_1,Motor_CW);
+  f6:	60 e0       	ldi	r22, 0x00	; 0
+  f8:	81 e0       	ldi	r24, 0x01	; 1
+  fa:	0e 94 83 00 	call	0x106	; 0x106 <DCMotor_Rotate>
+		DCMotor_Brake(Motor_0);
+  fe:	80 e0       	ldi	r24, 0x00	; 0
+ 100:	0e 94 b4 00 	call	0x168	; 0x168 <DCMotor_Brake>
+ 104:	bf cf       	rjmp	.-130    	; 0x84 <main+0x8>
+
+00000106 <DCMotor_Rotate>:
+	
+}
+
+void DCMotor_Rotate(Motor motor, Motor_Direction direction)
+{
+	switch(motor)
+ 106:	88 23       	and	r24, r24
+ 108:	19 f0       	breq	.+6      	; 0x110 <DCMotor_Rotate+0xa>
+ 10a:	81 30       	cpi	r24, 0x01	; 1
+ 10c:	b9 f0       	breq	.+46     	; 0x13c <DCMotor_Rotate+0x36>
+ 10e:	08 95       	ret
+	{
+		case Motor_0:
+		Set_Bit(PORTB, Motor_EN1);
+ 110:	88 b3       	in	r24, 0x18	; 24
+ 112:	88 60       	ori	r24, 0x08	; 8
+ 114:	88 bb       	out	0x18, r24	; 24
+		switch(direction)
+ 116:	66 23       	and	r22, r22
+ 118:	19 f0       	breq	.+6      	; 0x120 <DCMotor_Rotate+0x1a>
+ 11a:	61 30       	cpi	r22, 0x01	; 1
+ 11c:	41 f0       	breq	.+16     	; 0x12e <DCMotor_Rotate+0x28>
+ 11e:	08 95       	ret
+		{
+			case Motor_CW:
+			Set_Bit(PORTC, Motor_A1);
+ 120:	85 b3       	in	r24, 0x15	; 21
+ 122:	88 60       	ori	r24, 0x08	; 8
+ 124:	85 bb       	out	0x15, r24	; 21
+			Clr_Bit(PORTC, Motor_A2);
+ 126:	85 b3       	in	r24, 0x15	; 21
+ 128:	8f 7e       	andi	r24, 0xEF	; 239
+ 12a:	85 bb       	out	0x15, r24	; 21
+			break;
+ 12c:	08 95       	ret
+			case Motor_CCW:
+			Clr_Bit(PORTC, Motor_A1);
+ 12e:	85 b3       	in	r24, 0x15	; 21
+ 130:	87 7f       	andi	r24, 0xF7	; 247
+ 132:	85 bb       	out	0x15, r24	; 21
+			Set_Bit(PORTC, Motor_A2);
+ 134:	85 b3       	in	r24, 0x15	; 21
+ 136:	80 61       	ori	r24, 0x10	; 16
+ 138:	85 bb       	out	0x15, r24	; 21
+			break;
+ 13a:	08 95       	ret
+		}
+		break;
+		case Motor_1:
+		Set_Bit(PORTB, Motor_EN2);
+ 13c:	88 b3       	in	r24, 0x18	; 24
+ 13e:	80 61       	ori	r24, 0x10	; 16
+ 140:	88 bb       	out	0x18, r24	; 24
+		switch(direction)
+ 142:	66 23       	and	r22, r22
+ 144:	19 f0       	breq	.+6      	; 0x14c <DCMotor_Rotate+0x46>
+ 146:	61 30       	cpi	r22, 0x01	; 1
+ 148:	41 f0       	breq	.+16     	; 0x15a <DCMotor_Rotate+0x54>
+ 14a:	08 95       	ret
+		{
+			case Motor_CW:
+			Set_Bit(PORTC, Motor_B1);
+ 14c:	85 b3       	in	r24, 0x15	; 21
+ 14e:	80 62       	ori	r24, 0x20	; 32
+ 150:	85 bb       	out	0x15, r24	; 21
+			Clr_Bit(PORTC, Motor_B2);
+ 152:	85 b3       	in	r24, 0x15	; 21
+ 154:	8f 7b       	andi	r24, 0xBF	; 191
+ 156:	85 bb       	out	0x15, r24	; 21
+			break;
+ 158:	08 95       	ret
+			case Motor_CCW:
+			Clr_Bit(PORTC, Motor_B1);
+ 15a:	85 b3       	in	r24, 0x15	; 21
+ 15c:	8f 7d       	andi	r24, 0xDF	; 223
+ 15e:	85 bb       	out	0x15, r24	; 21
+			Set_Bit(PORTC, Motor_B2);
+ 160:	85 b3       	in	r24, 0x15	; 21
+ 162:	80 64       	ori	r24, 0x40	; 64
+ 164:	85 bb       	out	0x15, r24	; 21
+ 166:	08 95       	ret
+
+00000168 <DCMotor_Brake>:
+	}
+}
+
+void DCMotor_Brake(Motor motor)
+{
+	switch(motor)
+ 168:	88 23       	and	r24, r24
+ 16a:	19 f0       	breq	.+6      	; 0x172 <DCMotor_Brake+0xa>
+ 16c:	81 30       	cpi	r24, 0x01	; 1
+ 16e:	41 f0       	breq	.+16     	; 0x180 <DCMotor_Brake+0x18>
+ 170:	08 95       	ret
+	{
+		case Motor_0:
+		Clr_Bit(PORTC, Motor_A1);
+ 172:	85 b3       	in	r24, 0x15	; 21
+ 174:	87 7f       	andi	r24, 0xF7	; 247
+ 176:	85 bb       	out	0x15, r24	; 21
+		Clr_Bit(PORTC, Motor_A2);
+ 178:	85 b3       	in	r24, 0x15	; 21
+ 17a:	8f 7e       	andi	r24, 0xEF	; 239
+ 17c:	85 bb       	out	0x15, r24	; 21
+		break;
+ 17e:	08 95       	ret
+		case Motor_1:
+		Clr_Bit(PORTC, Motor_B1);
+ 180:	85 b3       	in	r24, 0x15	; 21
+ 182:	8f 7d       	andi	r24, 0xDF	; 223
+ 184:	85 bb       	out	0x15, r24	; 21
+		Clr_Bit(PORTC, Motor_B2);
+ 186:	85 b3       	in	r24, 0x15	; 21
+ 188:	8f 7b       	andi	r24, 0xBF	; 191
+ 18a:	85 bb       	out	0x15, r24	; 21
+ 18c:	08 95       	ret
+
+0000018e <Uart_Initilization>:
+ *  Author: abdala abdelatif
+ */ 
+
+#include "Uart.h"
+void Uart_Initilization (uint16_t Baud_Rate){
+	DDRD &=~(1<<0);
+ 18e:	21 b3       	in	r18, 0x11	; 17
+ 190:	2e 7f       	andi	r18, 0xFE	; 254
+ 192:	21 bb       	out	0x11, r18	; 17
+	DDRD |= (1<<1);
+ 194:	21 b3       	in	r18, 0x11	; 17
+ 196:	22 60       	ori	r18, 0x02	; 2
+ 198:	21 bb       	out	0x11, r18	; 17
+	UCSRB |= (1<<RXEN) | (1<<TXEN);//Enable receive, transmit //USCRB = 0x18;
+ 19a:	2a b1       	in	r18, 0x0a	; 10
+ 19c:	28 61       	ori	r18, 0x18	; 24
+ 19e:	2a b9       	out	0x0a, r18	; 10
+	UCSRC |= (1<<URSEL) | (1 << UCSZ1) | (1 << UCSZ0);
+ 1a0:	20 b5       	in	r18, 0x20	; 32
+ 1a2:	26 68       	ori	r18, 0x86	; 134
+ 1a4:	20 bd       	out	0x20, r18	; 32
+	uint16_t UBRR_Value = ((1000000/Baud_Rate)-1);
+ 1a6:	9c 01       	movw	r18, r24
+ 1a8:	40 e0       	ldi	r20, 0x00	; 0
+ 1aa:	50 e0       	ldi	r21, 0x00	; 0
+ 1ac:	60 e4       	ldi	r22, 0x40	; 64
+ 1ae:	72 e4       	ldi	r23, 0x42	; 66
+ 1b0:	8f e0       	ldi	r24, 0x0F	; 15
+ 1b2:	90 e0       	ldi	r25, 0x00	; 0
+ 1b4:	0e 94 e5 00 	call	0x1ca	; 0x1ca <__divmodsi4>
+ 1b8:	21 50       	subi	r18, 0x01	; 1
+ 1ba:	31 09       	sbc	r19, r1
+	UBRRL = (uint8_t) UBRR_Value;
+ 1bc:	29 b9       	out	0x09, r18	; 9
+	UBRRH = (uint8_t) (UBRR_Value >> 8);
+ 1be:	30 bd       	out	0x20, r19	; 32
+ 1c0:	08 95       	ret
+
+000001c2 <Uart_Recieve>:
+}
+
+uint8_t Uart_Recieve (void) {
+	
+	uint8_t DATA = 0;
+	while(GET_BIT(UCSRA, RXC) != 1);
+ 1c2:	5f 9b       	sbis	0x0b, 7	; 11
+ 1c4:	fe cf       	rjmp	.-4      	; 0x1c2 <Uart_Recieve>
+	DATA = UDR;
+ 1c6:	8c b1       	in	r24, 0x0c	; 12
+	return DATA;
+	
+}
+ 1c8:	08 95       	ret
+
+000001ca <__divmodsi4>:
+ 1ca:	05 2e       	mov	r0, r21
+ 1cc:	97 fb       	bst	r25, 7
+ 1ce:	1e f4       	brtc	.+6      	; 0x1d6 <__divmodsi4+0xc>
+ 1d0:	00 94       	com	r0
+ 1d2:	0e 94 fc 00 	call	0x1f8	; 0x1f8 <__negsi2>
+ 1d6:	57 fd       	sbrc	r21, 7
+ 1d8:	07 d0       	rcall	.+14     	; 0x1e8 <__divmodsi4_neg2>
+ 1da:	0e 94 04 01 	call	0x208	; 0x208 <__udivmodsi4>
+ 1de:	07 fc       	sbrc	r0, 7
+ 1e0:	03 d0       	rcall	.+6      	; 0x1e8 <__divmodsi4_neg2>
+ 1e2:	4e f4       	brtc	.+18     	; 0x1f6 <__divmodsi4_exit>
+ 1e4:	0c 94 fc 00 	jmp	0x1f8	; 0x1f8 <__negsi2>
+
+000001e8 <__divmodsi4_neg2>:
+ 1e8:	50 95       	com	r21
+ 1ea:	40 95       	com	r20
+ 1ec:	30 95       	com	r19
+ 1ee:	21 95       	neg	r18
+ 1f0:	3f 4f       	sbci	r19, 0xFF	; 255
+ 1f2:	4f 4f       	sbci	r20, 0xFF	; 255
+ 1f4:	5f 4f       	sbci	r21, 0xFF	; 255
+
+000001f6 <__divmodsi4_exit>:
+ 1f6:	08 95       	ret
+
+000001f8 <__negsi2>:
+ 1f8:	90 95       	com	r25
+ 1fa:	80 95       	com	r24
+ 1fc:	70 95       	com	r23
+ 1fe:	61 95       	neg	r22
+ 200:	7f 4f       	sbci	r23, 0xFF	; 255
+ 202:	8f 4f       	sbci	r24, 0xFF	; 255
+ 204:	9f 4f       	sbci	r25, 0xFF	; 255
+ 206:	08 95       	ret
+
+00000208 <__udivmodsi4>:
+ 208:	a1 e2       	ldi	r26, 0x21	; 33
+ 20a:	1a 2e       	mov	r1, r26
+ 20c:	aa 1b       	sub	r26, r26
+ 20e:	bb 1b       	sub	r27, r27
+ 210:	fd 01       	movw	r30, r26
+ 212:	0d c0       	rjmp	.+26     	; 0x22e <__udivmodsi4_ep>
+
+00000214 <__udivmodsi4_loop>:
+ 214:	aa 1f       	adc	r26, r26
+ 216:	bb 1f       	adc	r27, r27
+ 218:	ee 1f       	adc	r30, r30
+ 21a:	ff 1f       	adc	r31, r31
+ 21c:	a2 17       	cp	r26, r18
+ 21e:	b3 07       	cpc	r27, r19
+ 220:	e4 07       	cpc	r30, r20
+ 222:	f5 07       	cpc	r31, r21
+ 224:	20 f0       	brcs	.+8      	; 0x22e <__udivmodsi4_ep>
+ 226:	a2 1b       	sub	r26, r18
+ 228:	b3 0b       	sbc	r27, r19
+ 22a:	e4 0b       	sbc	r30, r20
+ 22c:	f5 0b       	sbc	r31, r21
+
+0000022e <__udivmodsi4_ep>:
+ 22e:	66 1f       	adc	r22, r22
+ 230:	77 1f       	adc	r23, r23
+ 232:	88 1f       	adc	r24, r24
+ 234:	99 1f       	adc	r25, r25
+ 236:	1a 94       	dec	r1
+ 238:	69 f7       	brne	.-38     	; 0x214 <__udivmodsi4_loop>
+ 23a:	60 95       	com	r22
+ 23c:	70 95       	com	r23
+ 23e:	80 95       	com	r24
+ 240:	90 95       	com	r25
+ 242:	9b 01       	movw	r18, r22
+ 244:	ac 01       	movw	r20, r24
+ 246:	bd 01       	movw	r22, r26
+ 248:	cf 01       	movw	r24, r30
+ 24a:	08 95       	ret
+
+0000024c <_exit>:
+ 24c:	f8 94       	cli
+
+0000024e <__stop_program>:
+ 24e:	ff cf       	rjmp	.-2      	; 0x24e <__stop_program>
